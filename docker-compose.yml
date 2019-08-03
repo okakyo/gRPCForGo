@@ -1,0 +1,7 @@
+version "3"
+service:
+        nginx:
+        frontend:
+        backend: 
+        db:
+        redies:
