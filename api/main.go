@@ -24,9 +24,15 @@ func main(){
 	e.GET("/users/{user_id}", func(context  echo.Context) error {
 		return context.JSON(200,"HelloWorld")
 	})
-	e.POST("/signup",)
-	e.PATCH("/users/{user_id}")
-	e.DELETE("/close")
+	e.POST("/signup", func(context echo.Context) error {
+		return context.JSON(200,"GoodBye")
+	})
+	e.PATCH("/users/{user_id}", func(context echo.Context) error {
+		return context.JSON(200,"Seeyou")
+	})
+	e.DELETE("/close", func(context echo.Context) error {
+		return  context.JSON(200,"GoodBtw")
+	})
 	fmt.Println("Start the Server");
 	e.Start(":3000");
 
