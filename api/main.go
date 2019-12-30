@@ -7,18 +7,24 @@ import(
 
 )
 
-func responseValue(){
-	return{}
+type userType struct {
+	user_id  string `json:"name" form:"name" query:"name"`
+	password string `json:"email" form:"email" query:"email"`
+	nickname string `json:" nickname" form:"nickname" query:"nickname"`
+	comment  string `json:"comment" form:"comment" query:"comment"`
 }
+
 
 
 func main(){
 	e:=echo.New();
-
-	e.GET("/users/{user_id}", func(context  echo.Context) error {
-
+	e.GET("/", func(context echo.Context) error {
+		return context.String(200, "Hello World")
 	})
-	e.POST("/signup")
+	e.GET("/users/{user_id}", func(context  echo.Context) error {
+		return context.JSON(200,"HelloWorld")
+	})
+	e.POST("/signup",)
 	e.PATCH("/users/{user_id}")
 	e.DELETE("/close")
 	fmt.Println("Start the Server");
