@@ -1,0 +1,22 @@
+version: 3
+services:
+  api:
+    build: ./api
+    restart: always
+    container_name: api_go_server
+    depends_on:
+      - db
+    ports:
+      - 4000:3000
+  db:
+    image: mysql:5.7-alpine
+    volumes: docker/db
+    container_name: db_go_server
+    environment:
+      - MYSQL_DATABASE: api
+      - MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      - MYSQL_USERNAME: ${USERNAME}
+      - MYSQL_PASSWORD: ${PASSWORD}
+    ports:
+      - 3456:3306
+

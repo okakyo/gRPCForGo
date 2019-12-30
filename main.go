@@ -1,23 +1,17 @@
-package api
+package main
 
 import(
 	"fmt"
-	"github.com/labstack/echo",
-	"./handler"
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 
 )
 
-type userType struct {
-	user_id  string `json:"name" form:"name" query:"name"`
-	password string `json:"email" form:"email" query:"email"`
-	nickname string `json:" nickname" form:"nickname" query:"nickname"`
-	comment  string `json:"comment" form:"comment" query:"comment"`
-}
-
-
-
-func main(){
+func main()  {
 	e:=echo.New();
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
 	e.GET("/", func(context echo.Context) error {
 		return context.String(200, "Hello World")
 	})
@@ -34,9 +28,6 @@ func main(){
 		return  context.JSON(200,"GoodBtw")
 	})
 	fmt.Println("Start the Server");
-	e.Start(":3000");
-
-
+	e.Logger.Fatal(e.Start(":1323"))
 
 }
-

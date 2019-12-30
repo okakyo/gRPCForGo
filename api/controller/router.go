@@ -2,7 +2,7 @@ package controller
 
 import (
 	"github.com/labstack/echo"
-	"github.com/jinzhu/gorm"
+
 	-"github.com/go-sql-driver/mysql"
 )
 
